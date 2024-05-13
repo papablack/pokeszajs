@@ -1,6 +1,5 @@
 import { RWSViewComponent, RWSView,observable } from '@rws-framework/client';
 import events from '../../events/events';
-import { allComponents, provideFluentDesignSystem  } from '@fluentui/web-components';
 import { Pokemon } from 'pokenode-ts';
 
 // import { PokeList } from '../../components/pokemon-list/component';
@@ -13,6 +12,7 @@ import { Pokemon } from 'pokenode-ts';
 class HomePage extends RWSViewComponent {  
 
     @observable searchResults: Pokemon = null;
+    @observable loading: boolean = false;
 
     searchResultsChanged(oldVal: Pokemon, newVal: Pokemon)
     {
@@ -24,14 +24,16 @@ class HomePage extends RWSViewComponent {
     connectedCallback(): void 
     {
         super.connectedCallback();   
-        provideFluentDesignSystem().register(allComponents);
+        
+
+        this.on(events.search.in_progress, () => {
+            this.loading = true;
+        });
+
         this.on<Pokemon>(events.search.result, (res) => {   
-            if(!this.searchResults){
-                this.searchResults = res.detail;
-            }else{
-                this.searchResults = {...(res.detail)};
-               
-            }                               
+            this.searchResults = res.detail;              
+
+            this.loading = false;            
         });
     }
 }

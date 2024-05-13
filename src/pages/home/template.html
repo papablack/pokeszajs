@@ -3,6 +3,11 @@
         
     <search-bar></search-bar>
 
+    <!-- <the-loader> is RWS tag with scss loader -->
+    ${T.when(x => x.loading, T.html`
+        <the-loader></the-loader>
+    `)}
+
     ${T.when(x => x.searchResults, T.html`
         <poke-list :searchData="${x => x.searchResults}"></poke-list>
     `)}

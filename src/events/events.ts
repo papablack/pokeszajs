@@ -1,6 +1,7 @@
 export default {
     search:{
-        result: 'search:result'
+        result: 'search:result',
+        in_progress: 'search:in_progress'
     },
     menu: {
         toggle: 'app.menu:toggle',

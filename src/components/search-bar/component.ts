@@ -26,6 +26,7 @@ class SearchBar extends RWSViewComponent {
         const searchVal: string = (this.$('#poke-search-val') as HTMLInputElement).value;
 
         try {
+            this.$emit(events.search.in_progress, true);
             const results: Pokemon = await this.api.getPokemonByName(searchVal);
             this.$emit(events.search.result, results);        
         } catch(error: Error | any){
