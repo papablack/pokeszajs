@@ -1,0 +1,20 @@
+@import "@cwd/src/styles/includes.scss";
+
+@include default-styles();
+
+.search-bar{
+    @include grid-container();
+
+    .left{
+        @include grid-column(10);
+
+        fluent-text-field{
+            width: 100%;
+            margin-right: 15px;
+        }
+    }
+
+    .right{
+        @include grid-column(2);
+    }
+}

@@ -1,0 +1,9 @@
+<section>
+    <header><h1>Search for pokemon</h1></header>
+        
+    <search-bar></search-bar>
+
+    ${T.when(x => x.searchResults, T.html`
+        <poke-list :searchData="${x => x.searchResults}"></poke-list>
+    `)}
+</section>

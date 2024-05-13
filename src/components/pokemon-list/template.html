@@ -1,0 +1,5 @@
+<section>
+    ${T.repeat(x => x.evolutionOrder, T.html`        
+        <poke-entry :current="${ (item, c) => c.parent.searchData.name === item}" pokeId="${ (item) => item }"></poke-entry>
+    `)}   
+</section>

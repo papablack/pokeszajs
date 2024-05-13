@@ -1,0 +1,8 @@
+<div class="search-bar">
+    <div class="left">
+        <fluent-text-field @keyup="${ (x, c) => x.enter(c.event)}" id="poke-search-val" appearance="outline"></fluent-text-field>
+    </div>
+    <div class="right">
+        <fluent-button @click="${ x => x.pokeSearch()}" appearance="accent">Search</fluent-button>
+    </div>
+</div>

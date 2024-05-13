@@ -1,0 +1,10 @@
+${T.when(x => x.data , T.html`<section>
+    <header>
+        <h2>Poke entry #${x => x.data.id}</h2>
+    </header>
+
+    ${T.when((x) => !x.current, T.html`<h3>${x => x.data.species.name}</h3>`)}
+    ${T.when((x) => x.current, T.html`<h3><u>${x => x.data.species.name}</u></h3>`)}
+    
+    <img width="500" src="${ x => x.data.sprites.front_default}" alt="${x => x.data.name}" />
+</section>`)}
